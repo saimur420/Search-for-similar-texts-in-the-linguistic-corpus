@@ -70,14 +70,14 @@ foreach ($textsid as $key => $value) {
 		#$result = array_intersect($bigrams1, $bigrams2);
 		$result = array_intersect_fixed($bigrams1, $bigrams2); # доработанная функция array_intersect. Был неверный результат при наличии дубликатов	
 		$c_result = count($result);
-		$WNGC12 = $c_result/count($bigrams1);
-		$WNGC21 = $c_result/count($bigrams2);
-		$WNGR = $c_result/(count($bigrams1)+count($bigrams2)-$c_result);
+		$WNGC12 = $c_result/count($bigrams1); # подсчёт метрики ngram containment текста 1 в тексте 2
+		$WNGC21 = $c_result/count($bigrams2); # подсчёт метрики ngram containment текста 2 в тексте 1
+		$WNGR = $c_result/(count($bigrams1)+count($bigrams2)-$c_result); # подсчёт метрики ngram resemblance
 		
 		$fields = array($text1id, $text2id, $WNGC12, $WNGC21, $c_result, $WNGR, $distsim);
 		fputcsv($fp, $fields);
 		$cutoff = 0.6;
-		if ($WNGC12 > $cutoff or $WNGC21 > $cutoff ) {
+		if ($WNGC12 > $cutoff or $WNGC21 > $cutoff ) { # вывод таблицы
 			echo '<tr><td>'.$text1id.'</td><td>'.$text2id.'</td><td>'.$WNGC12.'</td><td>'.$WNGC21.'</td><td>'.$c_result.'</td><td>'.$WNGR.'</td><td>'.$distsim.'</td></tr>';	
 		}
 		++$b;
