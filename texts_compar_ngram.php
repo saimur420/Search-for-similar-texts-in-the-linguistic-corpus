@@ -4,8 +4,7 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 ini_set('max_execution_time', '86400');
-#ini_set('max_execution_time', "10");
-include 'C:/Users/Admin/vendor/autoload.php';
+include 'C:/Users/Admin/vendor/autoload.php'; # подкючение сторонней библиотеки  yooper/php-text-analysis
 
 function array_intersect_fixed($array1, $array2) {
     $result = array();
