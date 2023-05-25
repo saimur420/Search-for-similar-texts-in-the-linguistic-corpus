@@ -1,3 +1,4 @@
+# Author: Bykov Fedor (saimur2@gmail.com)
 <?php
 include("connection.php"); # подключение к бд
 ini_set('error_reporting', E_ALL);
